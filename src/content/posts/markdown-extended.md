@@ -1,12 +1,13 @@
 ---
 title: Markdown 扩展功能
-published: 1970-01-01
-updated: 1970-01-01
-description: "了解 Firefly 中的 Markdown 功能"
-image: ""
+published: 2026-01-01
+updated: 2026-01-01
+description: '了解 Firefly 中的 Markdown 功能'
+image: ''
 tags: [演示, 示例, Markdown, Firefly]
-category: "文章示例"
+category: '文章示例'
 slug: markdown-extended
+draft: true
 ---
 
 ## GitHub 仓库卡片
@@ -31,10 +32,10 @@ export const siteConfig: SiteConfig = {
   // ...
   rehypeCallouts: {
     // 选项: "github" | "obsidian" | "vitepress" | "docusaurus"
-    theme: "github",
-  },
+    theme: 'github'
+  }
   // ...
-};
+}
 ```
 
 注意：**更改配置后需要重启开发服务器才能生效。**
@@ -79,7 +80,6 @@ export const siteConfig: SiteConfig = {
 <summary>点击展开 Obsidian 语法列表</summary>
 
 ```markdown
-
 > [!NOTE] NOTE
 > 通用的笔记块。
 
@@ -164,6 +164,7 @@ export const siteConfig: SiteConfig = {
 > [!NOTE] 自定义标题
 > 这是一个带有自定义标题的示例。
 ```
+
 </details>
 
 ![Obsidian](./images/obsidian.avif)
@@ -196,6 +197,7 @@ export const siteConfig: SiteConfig = {
 > [!TIP] 自定义标题
 > VitePress 风格同样支持自定义标题。
 ```
+
 </details>
 
 ![VitePress](./images/vitepress.avif)
@@ -253,6 +255,10 @@ export const siteConfig: SiteConfig = {
 内容 :spoiler[被隐藏了 **哈哈**]！
 ```
 
+## 嵌入视频 video
+
+<iframe width="100%" height="468" src="//player.bilibili.com/player.html?bvid=BV1fK4y1s7Qf&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" &autoplay=0> </iframe>
+
 ## 图片画廊网格 (Image Grid)
 
 您可以使用 `[grid]` 和 `[/grid]` 标签将多张图片纵向并排展示。这对于展示照片画廊或对比图非常有用。系统会自动根据包裹在其中的图片数量（最多支持并排展示4张）以响应式网格进行布局。
@@ -276,6 +282,5 @@ export const siteConfig: SiteConfig = {
 ![示例图片二](./images/firefly3.avif)
 [/grid]
 ```
-
 
 ---

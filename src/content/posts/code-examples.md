@@ -1,12 +1,13 @@
 ---
 title: Firefly 代码块示例
-published: 1970-01-03
+published: 2026-01-03
 pinned: false
 description: 在Firefly中使用表达性代码的代码块在 Markdown 中的外观。
 tags: [Markdown, Firefly]
 category: 文章示例
 image: ./images/firefly3.avif
 slug: code-examples
+draft: true
 ---
 
 在这里，我们将探索如何使用 [Expressive Code](https://expressive-code.com/) 展示代码块。提供的示例基于官方文档，您可以参考以获取更多详细信息。
@@ -130,17 +131,8 @@ function demo() {
 
 ```jsx {"1":5} del={"2":7-8} ins={"3":10-12}
 // labeled-line-markers.jsx
-<button
-  role="button"
-  {...props}
-  value={value}
-  className={buttonClassName}
-  disabled={disabled}
-  active={active}
->
-  {children &&
-    !active &&
-    (typeof children === 'string' ? <span>{children}</span> : children)}
+<button role="button" {...props} value={value} className={buttonClassName} disabled={disabled} active={active}>
+  {children && !active && (typeof children === 'string' ? <span>{children}</span> : children)}
 </button>
 ```
 
@@ -148,20 +140,8 @@ function demo() {
 
 ```jsx {"1. Provide the value prop here:":5-6} del={"2. Remove the disabled and active states:":8-10} ins={"3. Add this to render the children inside the button:":12-15}
 // labeled-line-markers.jsx
-<button
-  role="button"
-  {...props}
-
-  value={value}
-  className={buttonClassName}
-
-  disabled={disabled}
-  active={active}
->
-
-  {children &&
-    !active &&
-    (typeof children === 'string' ? <span>{children}</span> : children)}
+<button role="button" {...props} value={value} className={buttonClassName} disabled={disabled} active={active}>
+  {children && !active && (typeof children === 'string' ? <span>{children}</span> : children)}
 </button>
 ```
 
@@ -200,7 +180,7 @@ function demo() {
 ```js "given text"
 function demo() {
   // 标记行内的任何给定文本
-  return '支持给定文本的多个匹配项';
+  return '支持给定文本的多个匹配项'
 }
 ```
 
@@ -212,7 +192,7 @@ console.log('单词 yes 和 yep 将被标记。')
 
 #### 转义正斜杠
 
-```sh /\/ho.*\//
+```sh //ho.*//
 echo "Test" > /home/test.txt
 ```
 
@@ -220,9 +200,9 @@ echo "Test" > /home/test.txt
 
 ```js "return true;" ins="inserted" del="deleted"
 function demo() {
-  console.log('这些是插入和删除的标记类型');
+  console.log('这些是插入和删除的标记类型')
   // return 语句使用默认标记类型
-  return true;
+  return true
 }
 ```
 
@@ -338,7 +318,7 @@ console.log('我在第6行')
 
 ```js
 export function greet(name) {
-  return `Hello, ${name}!`;
+  return `Hello, ${name}!`
 }
 ```
 
@@ -360,7 +340,7 @@ def greet(name):
 
 ```js
 export function greet(name) {
-  return `Hello, ${name}!`;
+  return `Hello, ${name}!`
 }
 ```
 
@@ -379,9 +359,9 @@ def greet(name):
 
 标签支持 [emoji 短代码](https://github.com/omnidan/node-emoji#readme)，构建时会自动转换成 emoji：
 
-````markdown
+```markdown
 ::: code-group labels=[:package: npm, :package: pnpm, :yarn: yarn]
-````
+```
 
 ::: code-group labels=[:package: npm, :package: pnpm, :yarn: yarn]
 
@@ -407,9 +387,9 @@ yarn create astro
 
 ```js title="astro.config.mjs" showLineNumbers {2} ins={3}
 export default {
-  theme: "firefly",
-  codeGroup: true,
-};
+  theme: 'firefly',
+  codeGroup: true
+}
 ```
 
 ```bash title="部署"
@@ -418,10 +398,10 @@ pnpm build && pnpm preview
 
 ```js collapse={1-3}
 // 这三行默认折叠
-import { a } from "a";
-import { b } from "b";
+import { a } from 'a'
+import { b } from 'b'
 
-console.log(a, b);
+console.log(a, b)
 ```
 
 :::
