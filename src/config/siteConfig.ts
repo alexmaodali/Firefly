@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "Alexmaodali blog",
 
 	// 站点 URL
-	site_url: "https://Alexmaodali.cuteleaf.cn",
+	site_url: "https://firefly.alexmaodali-74e.workers.dev",
 
 	// 站点描述
 	description:
