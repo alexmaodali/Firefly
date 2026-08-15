@@ -1,11 +1,12 @@
 ---
 title: Firefly Wiki Link 内部链接示例
-published: 1970-01-03
+published: 2026-01-03
 description: 在 Firefly 文章中使用 Obsidian 风格的 Wiki Link 内部链接，并自动生成文章链接卡片。
-image: ""
+image: ''
 tags: [Markdown, Obsidian, Wiki-Link, 文章示例]
 category: 博客指南
 slug: guide/firefly-wiki-link
+draft: true
 ---
 
 Firefly 支持在 Markdown、MDX 文章中使用 Obsidian 风格的 Wiki Link 内部链接。链接目标填写文章的 slug 或文件路径，都不需要包含扩展名，具体匹配规则见下文「链接目标的三种写法」。
@@ -60,13 +61,13 @@ Firefly 支持在 Markdown、MDX 文章中使用 Obsidian 风格的 Wiki Link �
 
 链接目标按以下顺序匹配：
 
-| 写法 | 示例 | 在 Obsidian 中 |
-|---|---|---|
-| frontmatter 的 `slug` | `[[firefly-wiki-link]]` | ✗ 不支持 |
+| 写法                       | 示例                              | 在 Obsidian 中     |
+| -------------------------- | --------------------------------- | ------------------ |
+| frontmatter 的 `slug`      | `[[firefly-wiki-link]]`           | ✗ 不支持           |
 | 文件路径（相对仓库根目录） | `[[guide/firefly-layout-system]]` | ✓ 需改设置（推荐） |
-| 裸文件名（仓库内唯一时） | `[[firefly-layout-system]]` | ✓ 默认即是 |
+| 裸文件名（仓库内唯一时）   | `[[firefly-layout-system]]`       | ✓ 默认即是         |
 
-### 第一种：slug 
+### 第一种：slug
 
 `slug` 写法在 Obsidian 中不支持，`slug` 是 Firefly 自己的概念，Obsidian 不读取 frontmatter 里的 `slug`，所以按 slug 写的链接在 Obsidian 里既不会自动补全，也点不动，只有构建出的站点上能正常跳转。如果你主要在 Obsidian 里写作，用下面两种写法。
 

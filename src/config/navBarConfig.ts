@@ -63,7 +63,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			LinkPresets.Anime,
 
 			// 番组计划
-			LinkPresets.Bangumi,
+			// LinkPresets.Bangumi,
 		],
 	});
 
@@ -82,7 +82,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	});
 
 	// 自定义导航栏链接
-	links.push({
+	const link = {
 		name: "链接",
 		url: "#",
 		icon: "material-symbols:link",
@@ -113,7 +113,8 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				icon: "material-symbols:docs",
 			},
 		],
-	});
+	}
+	// links.push(link);
 
 	// 文档链接
 	// links.push({
