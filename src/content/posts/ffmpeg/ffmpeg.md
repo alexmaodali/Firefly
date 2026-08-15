@@ -4,6 +4,7 @@ published: 2026-08-15
 pinned: false
 description: FFmpeg将视频转换成gif
 tags: [FFmpeg, Gif]
+image: "api"
 category: 文章示例
 slug: FFmpegToGif
 ---
