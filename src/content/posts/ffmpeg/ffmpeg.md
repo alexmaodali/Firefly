@@ -1,12 +1,12 @@
 ---
-title: FFmpeg将视频转换成gif
+title: ffmpeg将视频转换成gif
 published: 2026-08-15
 pinned: false
-description: FFmpeg将视频转换成gif
-tags: [FFmpeg, Gif]
+description: ffmpeg将视频转换成gif
+tags: [ffmpeg, gif]
 image: "api"
-category: 文章示例
-slug: FFmpegToGif
+category: stack
+slug: ffmpeg-to-gif
 ---
 
 
