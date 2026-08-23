@@ -13,17 +13,17 @@ slug: dart-learning
 
 https://www.bilibili.com/video/BV1wR4Xz6EqG
 
-## 包管理器
+## Dart包管理器
 
 pub.dev 是 Dart 和 Flutter 的官方包仓库，类似于 npm（JavaScript）或 PyPI（Python）。
 
-## SDK安装
+## Dart-SDK安装
 
 ```shell
 choco install dart-sdk
 ```
 
-## 语法教程
+## Dart-语法教程
 
 [菜鸟教程-Dart](https://www.runoob.com/dart/dart-async.html)
 
@@ -163,6 +163,97 @@ class _CustomStatefulWidgetState extends State<CustomStatefulWidget> {
         bottomNavigationBar: Container(
           height: 80,
           child: Center(child: Text("Bottom")),
+        ),
+      ),
+    );
+  }
+}
+```
+
+## 点击事件 GestureDetector
+
+```dart
+body: Container(
+  child: Center(
+    child: GestureDetector(
+      child: Text("Event"),
+      onTap: () => print('Click'),
+    ),
+  ),
+),
+```
+
+## 计数器实现
+
+```dart
+import 'package:flutter/material.dart';
+
+class ClickComponnet extends StatefulWidget {
+  const ClickComponnet({super.key});
+
+  @override
+  State<ClickComponnet> createState() => _ClickComponnetState();
+}
+
+class _ClickComponnetState extends State<ClickComponnet> {
+  int count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: MaterialApp(
+        home: Scaffold(
+          body: Row(
+            children: [
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    count = count + 1;
+                  });
+                },
+                child: Text("Plus"),
+              ),
+              Text(count.toString()),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+## Container组件使用
+
+![image-20260824071512739](http://imgbed.alexmaodali.dpdns.org/file/default-imgbed/1787526930826_image-20260824071512739.png)
+
+```dart
+class Test extends StatelessWidget {
+  const Test({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          width: 200,
+          height: 200,
+          margin: EdgeInsets.all(20),
+          transform: Matrix4.rotationZ(0.05),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            border: Border.all(width: 3.0, color: Colors.black),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: TextButton(
+            onPressed: () {
+              print("ClickContainer");
+            },
+            child: Text(
+              "Hello Container",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ),
         ),
       ),
     );
