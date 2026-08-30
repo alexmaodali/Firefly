@@ -94,6 +94,12 @@ Found 4 connected devices:
 
 找到模拟器id，然后`flutter run -d emulator-5554`使用模拟器启动项目
 
+### 打包
+
+```
+flutter build apk --release
+```
+
 ## 常见问题
 
 ### JDK版本
