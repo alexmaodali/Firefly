@@ -260,3 +260,9 @@ class Test extends StatelessWidget {
   }
 }
 ```
+
+## Center组件
+
+```dart
+
+```
