@@ -261,8 +261,6 @@ class Test extends StatelessWidget {
 }
 ```
 
-## Center组件
+## 常用滚动组件
 
-```dart
-
-```
+![image-20260912135038549](http://imgbed.alexmaodali.dpdns.org/file/default-imgbed/1789192256701_image-20260912135038549.png)

@@ -8,12 +8,20 @@ image: 'api'
 category: android
 slug: flutter-learning-new
 draft: true
+
 ---
 
 
 
-## flutter learn
+## AI Coding
 
-https://www.bilibili.com/video/BV1Qb421Y7SV
+- 产品原型
+- 功能需要拆分进行实现
+- 可以将每次改动写入到md文档
 
-[Flutter SDK archive](https://docs.flutter.dev/install/archive)
+## 原型设计
+
+skill：
+
+- fronted-design
+- impeccable
