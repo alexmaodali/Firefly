@@ -629,4 +629,300 @@ func main() {
 }
 ```
 
-## 变量Pair
+## Type-Value Pair
+
+- variable
+	- type
+		- static type: int string ..
+		- concret type: interface定义的类型
+	- value
+
+type-value的组合就是TVP
+
+```go
+package main
+
+import "fmt"
+
+type object interface{}
+
+func main() {
+	// pair<staticType: string, value: "hello">
+	var greeting string = "hello"
+
+	var copy object
+	// pair<staticType: string, value: "hello">
+	copy = greeting
+
+	str, _ := copy.(string)
+	fmt.Println(str)
+}
+```
+
+>不论如何指向变量，pair会传递。
+>
+>访问它的值就是通过这个pair去找到value
+
+```go
+package main
+import "fmt"
+
+type MyErr struct{}
+func (e *MyErr) Error() string {return "oops"}
+
+func main() {
+    var err error // err静态类型 error(接口)，底层TVP
+    var e *MyErr = nil
+    err = e
+    // TVP：动态类型 = *MyErr，动态值 = nil
+    fmt.Println(err == nil) // false
+    // 接口变量==nil的条件：TVP的【动态类型】AND【动态值】全部nil
+}
+```
+
+## 结构体Tag
+
+```go
+package main
+
+import (
+	"fmt"
+	"encoding/json"
+)
+
+type User struct {
+	Age  string `json:"age"`
+	Name string `json:"name"`
+}
+
+func main() {
+	user := User{ "23", "Alex" }
+	userJson, err := json.Marshal(user)
+	if err != nil {
+		fmt.Println("Json Expand Error")
+		return
+	}
+	fmt.Printf("%s\n", userJson)
+}
+```
+
+```json
+{"age":"23","name":"Alex"}
+```
+
+## 调度器
+
+- 复用线程
+- 利用并行 多个CPU轮询
+- 抢占
+- 全局G队列
+
+## GoRoutine
+
+```go
+package main
+
+import "fmt"
+import "time"
+
+func newTask() {
+	i := 0
+	for {
+		i++
+		fmt.Printf("Task:i=%d\n", i)
+		time.Sleep(1 * time.Second)
+	}
+}
+
+func main() {
+	go newTask()
+	i := 0
+	for {
+		i++
+		fmt.Printf("Main:i=%d\n", i)
+		time.Sleep(1 * time.Second)
+	}
+}
+```
+
+```
+Main:i=1
+Task:i=1
+Task:i=2
+Main:i=2
+Main:i=3
+Task:i=3
+```
+
+## channel
+
+> channel能让两个goroutine进行通信
+
+### 无缓存的channel
+
+```go
+func main() {
+	channel := make(chan string)	
+
+	go func() {
+		defer fmt.Println("SubTask Done")
+		fmt.Println("SubTask Running")
+		channel <- "SubTask Has Done"
+	}()
+
+	result := <- channel
+	fmt.Println(result)
+}
+```
+
+```
+SubTask Running
+SubTask Done
+SubTask Has Done
+```
+
+### 有缓存的channel
+
+ ```go
+ package main
+ 
+ import "fmt"
+ import "time"
+ 
+ func main() {
+ 	c := make(chan int, 3)	
+ 	fmt.Println("Init: len(c)=", len(c), "cap(c)", cap(c))
+ 
+ 	go func() {
+ 		defer fmt.Println("子Go程结束")
+ 
+ 		for i := 0; i < 4; i++ {
+ 			c <- i
+ 			fmt.Println("子Go程运行中, 开始向Main进程发送元素:", i," len(c)=", len(c), "cap(c)", cap(c))
+ 		}
+ 	}()
+ 
+ 	time.Sleep(2 * time.Second)
+ 
+ 	for i := 0; i < 4; i++ {
+ 		num := <-c
+ 		fmt.Println("num = ", num)
+ 	}
+ 
+ 	fmt.Println("Main程结束")
+ 
+ 	i := 0
+ 
+ 	for {
+ 		i++
+ 	}
+ }
+ ```
+
+```
+Init: len(c)= 0 cap(c) 3
+子Go程运行中, 开始向Main进程发送元素: 0  len(c)= 1 cap(c) 3
+子Go程运行中, 开始向Main进程发送元素: 1  len(c)= 2 cap(c) 3
+子Go程运行中, 开始向Main进程发送元素: 2  len(c)= 3 cap(c) 3
+num =  0
+num =  1
+num =  2
+num =  3
+Main程结束
+子Go程运行中, 开始向Main进程发送元素: 3  len(c)= 3 cap(c) 3
+子Go程结束
+```
+
+### fib案例
+
+```go
+package main
+
+import "fmt"
+
+func fib(c, quit chan int) {
+	x, y := 1, 1
+	for {
+		select {
+			case c <- x:
+					x, y = y, x+y
+			case <-quit:
+				fmt.Println("quit")
+				return
+		}
+	}
+}
+
+func main() {
+	c := make(chan int)	
+	quit := make(chan int)	
+
+	go func ()  {
+		for i := 0; i < 10; i++ {
+			fmt.Println(<-c)
+		}
+		quit <- 0
+	}()
+	
+	fib(c, quit)
+}
+```
+
+## mod
+
+```bash
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct
+go mod edit -replace=x=y # 替换某个包的版本
+```
+
+```bash
+go mod init alexmaodali # 初始化模块
+```
+
+## go生态
+
+### web框架
+
+- beego
+- gin
+- echo
+- Iris
+
+### 微服务框架
+
+- go kit
+- istio
+
+### 容器编排
+
+- k8s
+- swarm
+
+### 服务发现
+
+- consul
+
+### 存储引擎
+
+- etcd: k/v存储
+- tidb: 分布式存储
+
+### 静态建站
+
+- hugo
+
+### 中间件
+
+- nsq消息队列
+- zinx TCP长连接框架 轻量级服务器
+- leaf 游戏服务器
+- grpc RPC框架
+- codis Redis集群
+
+### 爬虫框架
+
+- go query
+
+
+
