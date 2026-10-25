@@ -1,7 +1,7 @@
 ---
 title: 我的提示词
 published: 2026-10-25
-pinned: false
+pinned: true
 description: 我的提示词
 tags: [ai]
 image: 'api'
