@@ -1,27 +1,53 @@
 ---
-title: flutter-learn
-published: 2026-09-06
+title: 我的提示词
+published: 2026-10-25
 pinned: false
-description: flutter-learn
-tags: [flutter, android]
+description: 我的提示词
+tags: [ai]
 image: 'api'
-category: android
-slug: flutter-learning-new
-draft: true
-
+category: ai
+slug: my-prompt
+draft: false
 ---
 
+## 理解并复述需求
 
+```
+先理解并复述我的需求, 不允许你做其他事情！！！
+先理解并复述我的需求, 不允许你做其他事情！！！
+先理解并复述我的需求, 不允许你做其他事情！！！
+先理解并复述我的需求, 不允许你做其他事情！！！
+先理解并复述我的需求, 不允许你做其他事情！！！
+先理解并复述我的需求, 不允许你做其他事情！！！
+```
 
-## AI Coding
+## 分析问题原因
 
-- 产品原型
-- 功能需要拆分进行实现
-- 可以将每次改动写入到md文档
+```
+先分析问题原因，不允许你做其他事情！！！
+先分析问题原因，不允许你做其他事情！！！
+先分析问题原因，不允许你做其他事情！！！
+先分析问题原因，不允许你做其他事情！！！
+先分析问题原因，不允许你做其他事情！！！
+先分析问题原因，不允许你做其他事情！！！
+先分析问题原因，不允许你做其他事情！！！
+先分析问题原因，不允许你做其他事情！！！
+```
 
-## 原型设计
+## Todolist
 
-skill：
+```
+先列一个实现的todolist
+```
 
-- fronted-design
-- impeccable
+## Go 开始开发
+
+```
+Go，开始开发，严格按照todolist进行开发，开发完后需要使用表格总结；总结需要统计改了哪些文件或者模块。
+```
+
+## No-Check
+
+```
+追加约束：开发后由我手动编译运行，然后进行联调测试，不允许你使用mvn和pnpm对项目进行编译，运行，check等命令。
+```

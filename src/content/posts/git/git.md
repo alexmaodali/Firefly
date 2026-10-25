@@ -46,3 +46,65 @@ cd cilicili.git
 git fetch ..\cilicili.bundle dev:dev prod:prod
 git worktree add ../dev dev
 ```
+
+## git rebase
+
+```bash
+# 交互式变基操作 xxx -> 你要修改的提交的前一个提交
+git rebase -i xxx 
+# 中间提交操作
+git fetch gitlab dev
+git rebase gitlab/dev
+```
+
+## 忽略文件添加
+
+```bash
+git add . ":(exclude)*.yaml" ":(exclude)*.yml" ":(exclude)pom.xml"
+```
+
+## git zip
+
+```bash
+git archive -o mock-01.zip HEAD
+```
+
+## git sparse
+
+```bash
+ss-init
+ss add yudao-module-stat yudao-denpendencies ... # 添加你需要的模块
+```
+
+## 当小偷
+
+> 如果需要全量覆盖A目录，那么需要先删除A目录，再偷目标目录A
+
+```shell
+git checkout dev
+git checkout dev-mzl-sss-v4 -- apps/web-antd/src/api/subsystem/
+git checkout dev-mzl-sss-v4 -- apps/web-antd/src/views/subsystem/
+# 假如你在dev-mzl-sss-v4开发好了 现在需要合并代码到dev
+git co dev
+git checkout dev-mzl-sss-v4 -- yudao-module-subsystem/
+# 这样dev就有你dev-mzl-sss-v4对于yudao-module-subsystem/的修改了
+```
+
+## 当强盗
+
+powershell可以直接偷 美哉
+
+```shell
+git checkout temp-redev-226 -- ":(glob)**/application*.yaml"
+```
+
+## Git仓库优化性能
+
+```bash
+# 预打包，减少大量松散对象扫描开销
+git repack -d
+# 开启 fsmonitor（Windows Git for Windows 自带，大幅加速 git status）
+git config core.fsmonitor true
+git config core.untrackedcache true
+```
+
