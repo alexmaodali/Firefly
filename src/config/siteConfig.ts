@@ -56,11 +56,12 @@ export const siteConfig: SiteConfig = {
 	favicon: [
 		{
 			// 图标文件路径
-			src: "/favicon/firefly-32.png",
+			src: "/favicon/favicon-32x32.png",
+			// src: "../assets/images/avatar.jpg",
 			// 可选，指定主题 'light' | 'dark'
-			// theme: "light",
+			theme: "light",
 			// 可选，图标大小
-			// sizes: "32x32",
+			sizes: "32x32",
 		},
 	],
 
@@ -76,10 +77,11 @@ export const siteConfig: SiteConfig = {
 		// 例如: { type: "image", value: "assets/images/logo.png", valueDark: "assets/images/logo-dark.png", alt: "Logo" }
 		// 使用 Astro 图标库时不需要设置 valueDark，图标会自动跟随主题亮暗色切换
 		logo: {
-			type: "image",
-			value: "assets/images/logo/firefly-light.png",
-			valueDark: "assets/images/logo/firefly-dark.png",
-			alt: "🍀",
+			type: "icon",
+			value: "material-symbols:home"
+			// value: "assets/images/logo/firefly-light.png",
+			// valueDark: "assets/images/logo/firefly-dark.png",
+			// alt: "🍀",
 		},
 		// 导航栏标题
 		title: "Alexmaodali",
@@ -103,17 +105,17 @@ export const siteConfig: SiteConfig = {
 	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404并自动隐藏对应的导航栏菜单项
 	pages: {
 		// 友链页面开关
-		friends: false,
+		friends: true,
 		// 打赏页面开关
-		sponsor: false,
+		sponsor: true,
 		// 留言板页面开关，需要配置评论系统
-		guestbook: false,
+		guestbook: true,
 		// 番组计划页面开关，含追番、游戏、书籍和音乐
 		bangumi: true,
 		// 相册页面开关
 		gallery: true,
 		// 追番页面开关
-		anime: false,
+		anime: true,
 		// 动态页面开关
 		dynamic: true,
 	},
@@ -127,7 +129,7 @@ export const siteConfig: SiteConfig = {
 	// 文章列表布局配置
 	postListLayout: {
 		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（多列布局）
-		defaultMode: "list",
+		defaultMode: "grid",
 		// 移动端默认布局模式，不设置则跟随 defaultMode
 		mobileDefaultMode: "grid",
 		// 文章简介显示行数，设为 0 则不截断
@@ -149,9 +151,9 @@ export const siteConfig: SiteConfig = {
 			// 标签数量，设为 0 则不限制
 			tagCount: 5,
 			// 是否显示字数
-			showWords: false,
+			showWords: true,
 			// 是否显示阅读时间
-			showReadingTime: false,
+			showReadingTime: true,
 		},
 		// 底部 PostStats 统计信息显示控制
 		// 如果tagsPosition设置为"bottom"，则stats将不显示
