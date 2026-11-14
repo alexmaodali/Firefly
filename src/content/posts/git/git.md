@@ -12,6 +12,8 @@ draft: false
 
 ## git worktree
 
+- 多分支的仓库进行sparse时，要先`git config core.bare false`，否则会出问题
+
 ```bash
 # 首先克隆裸仓库
 git clone https://gitee.com/alexmaodali/cilicili.git --bare cilicili.git
@@ -19,7 +21,7 @@ git clone https://gitee.com/alexmaodali/cilicili.git --bare cilicili.git
 cd cilicili.git
 # 创建master工作树
 git worktree add ../master master
-# 继续创建feature工作树
+# 继续基于当前分支创建新分支feature工作树
 git worktree -b feature/danmu ../feature-danmu
 # 查看当前目录结构
 cd ..; tree .;
