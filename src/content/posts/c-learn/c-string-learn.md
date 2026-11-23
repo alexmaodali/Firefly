@@ -238,6 +238,7 @@ int main() {
 ### 统计文件字符个数
 
 ```c
+String_View sv_chop_by_type(String_View *sv, int (*istype)(int c)) {
 	size_t i = 0;
 	while (i < sv->count && !istype(sv->data[i])) {
 		i += 1;
@@ -288,5 +289,6 @@ int main() {
 
 	return 0;
 }
+
 ```
 
